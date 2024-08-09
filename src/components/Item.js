@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
 
 const Item = () => {
-  const [task,setTask]=useState({
-    name:'오늘',
-    list:[
-      {name:'운동하기'},
-      {name:'프로젝트 진행하기'}
-    ]
-  })
+    const [tasks,setTasks]=useState([
+        {
+            id:1,
+            title:'운동하기',
+            status:'active'
+        },
+        {
+            id:2,
+            title:'코딩공부',
+            status:'active'
+        },
+    ])
+const addTaskHandler=(todo)=>{
+    setTasks([...tasks,todo])
+}  
     return (
         <div>
-        <h1>{task.name}의 할일</h1>
+            <ul>
+                {tasks.map((task)=>
+                <li key={task.id}>
+                    {task.title}
+                </li>)}
+            </ul>
         </div>
     );
 };
